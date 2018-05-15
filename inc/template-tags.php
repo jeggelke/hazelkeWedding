@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package round
+ * @package hazelkeWedding
  */
 
 if ( ! function_exists( 'round_posted_on' ) ) :

@@ -9,268 +9,83 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package round
+ * @package hazelkeWedding
  */
 
 get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+			<div class="row no-side-margin">
+				<div class="col-xs-offset-1 col-xs-10">
+					<header id="masthead" class="site-header" role="banner">
+						<div class="site-branding ">
+							<div class="row header-container">
+								<div class="col-xs-12 no-side-padding hipster-photo-slanted">
+										<img src=<?php echo getRoot('/theme-images/header.jpg') ?> class="img-responsive" alt="header image">
+								</div>
+							</div>
 
-		<?php
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-
-			<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
-
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
-		<div class="container-fluid no-side-padding">
-			<div class="section container-fluid no-side-padding">
-				<div class="center-block metaslider-container">
-					<?php
-					$page = get_page_by_title( 'Home' );
-					$pageid = $page->ID;
-					$sliderID =  get_field('metaslider_id', $pageid);
-	    			echo do_shortcode("[metaslider id=". $sliderID . "]");
-
-					?>
+						</div><!-- .site-branding -->
+					</header><!-- #masthead -->
 				</div>
 			</div>
-			<div class="section container-fluid no-side-padding">
-				<h3 class="text-center">About</h3>
+		<div class="container-fluid no-side-padding">
+			<div class="container-fluid">
 				<div class="row no-side-margin">
 					<?php $args = array(
-												'numberposts' => 1,
+												'numberposts' => 10,
 												'offset' => 0,
-												'category' => 0,
+												'category' => 'OnePager',
 												'orderby' => 'post_date',
-												'order' => 'DESC',
+												'order' => 'ASC',
 												'include' => '',
 												'exclude' => '',
-												'meta_key' => '_wp_page_template',
-												'meta_value' => 'page_about.php',
-												'meta_compare' => 'like',
-												'post_type' => 'page',
+												'meta_key' => '',
+												'meta_value' => '',
+												'meta_compare' => '',
+												'post_type' => '',
 												'post_status' => 'draft, publish, future, pending, private',
 												'suppress_filters' => true
 					);
 
-					$about_page = get_posts( $args, ARRAY_A );
+					$one_pager_posts = get_posts( $args, ARRAY_A );
 
-					foreach ($about_page as $post) : setup_postdata( $post );
-					$about_text = get_field('home_page_about_text', false, false);
+					foreach ($one_pager_posts as $post) : setup_postdata( $post );
+					$teaser_text = get_field('one_pager_teaser', false, false);
+					$title_text = get_the_title( $post );
+					$external_url = get_field('one_pager_external_url', false, false);
+					$post_url = ($external_url != "") ? $external_url : get_permalink( $post );
+					$target = ($external_url != "") ? "_blank" : "_self";
+					$read_more = get_field('one_pager_read_more', false, false);
+					$key = array_search($post, $one_pager_posts);
 					?>
-					<div class="col-xs-12 col-sm-4 col-sm-offset-1 no-side-padding">
-						<img class="img-responsive center-block" src="<?php the_field('home_page_about_image') ?>" />
+					<div class="one-pager-section">
+						<h3 class="text-center"><?php echo $title_text ?></h3>
+					<div class="inner-flex">
+						<?php if ($key % 2 == 0) : ?>
+							<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-md-4 col-md-offset-1 no-side-padding vcenter img-container order-sm-0">
+								<img class="img-responsive center-block hipster-photo" src="<?php the_field('one_pager_image') ?>" />
+							</div><!--
+							--><div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-1 vcenter teaser-container order-sm-1">
+								<p class=""><?php echo $teaser_text ?></p>
+								<h4 class="text-center read-more-text"><a href="<?php echo $post_url ?>" target="<?php echo $target ?>"><?php echo $read_more ?></a></h4>
+							</div>
+						<?php else : ?>
+							<div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-1 vcenter teaser-container order-sm-1">
+								<p class=""><?php echo $teaser_text ?></p>
+								<h4 class="text-center read-more-text"><a href="<?php echo $post_url ?>" target="<?php echo $target ?>"><?php echo $read_more ?></a></h4>
+							</div><!--
+							--><div class="col-xs-10 col-xs-offset-1 col-sm-6 col-md-4 col-md-offset-1 no-side-padding vcenter img-container order-sm-0">
+								<img class="img-responsive center-block hipster-photo" src="<?php the_field('one_pager_image') ?>" />
+							</div>
+						<?php endif ?>
 					</div>
-					<div class="col-xs-12 col-sm-5 col-sm-offset-1">
-						<p><?php echo $about_text ?></p>
-						<h4 class="text-center read-more-text"><a href="about">Read More</a></h4>
-					</div>
+				</div>
 				<?php endforeach ?>
 				</div>
 			</div>
-			<div class="section container-fluid no-side-padding">
 
-				<!-- current events -->
-
-								<?php
-								$date = date('Ymd');
-					 		 	$prevargs = array(
-															'numberposts' => 100,
-															'offset' => 0,
-															'category' => 0,
-															'orderby' => 'event_date',
-															'order' => 'asc',
-															'meta_key' => 'event_date',
-															'meta_compare'	=> '<',
-															'meta_value'		=> $date,
-															'post_type' => 'event',
-															'post_status' => 'publish',
-															'suppress_filters' => true
-								);
-
-								$recent_posts = get_posts( $prevargs, ARRAY_A );
-								$number_of_current_posts = 0;
-
-								foreach ($recent_posts as $post) : setup_postdata( $post );
-									$date = get_field('event_date', false, false);
-									$datestring = $date;
-									$date = new DateTime($date);
-									$enddate = get_field('event_end_date', false, false);
-									$enddateproper = new DateTime($enddate);
-									$todays_date = new DateTime(date('Ymd'));
-									$todays_date->setTimezone(new DateTimeZone('America/New_York'));
-									if (($enddateproper->format('Ymd') >= $todays_date->format('Ymd')) and $date->format('Ymd') <= date('Ymd') and !empty($enddate)):
-										$number_of_current_posts = $number_of_current_posts + 1;
-									endif;
-								endforeach;
-
-								if ($number_of_current_posts > 0) : ?>
-									<div class="section past-events container-fluid">
-										<h3 class="text-center no-bottom-margin">Current Events</h3>
-								<?php
-								foreach ($recent_posts as $post) : setup_postdata( $post );
-								$date = get_field('event_date', false, false);
-								$datestring = $date;
-								$date = new DateTime($date);
-								$enddate = get_field('event_end_date', false, false);
-								$enddateproper = new DateTime($enddate);
-								$todays_date = new DateTime(date('Ymd'));
-								$todays_date->setTimezone(new DateTimeZone('America/New_York'));
-								if (($enddateproper->format('Ymd') >= $todays_date->format('Ymd')) and $date->format('Ymd') <= date('Ymd') and !empty($enddate)):
-
-								?>
-
-								<div class="row no-side-margin event-archive-container event-section">
-									<div class="col-xs-12 col-sm-4 col-sm-offset-1">
-										<?php the_post_thumbnail( 'medium', array( 'class' => 'event-thumb-homepage img-responsive center-block' ) ); ?>
-									</div>
-									<div class="col-xs-12 col-sm-7">
-										<div class="center-block">
-											<h4><?php the_title(); ?></h4>
-											<?php the_content(); ?>
-											<strong>Date:</strong> <?php
-
-											echo $date->format('m/d/Y');
-											if ($enddate != '') {
-												$enddate = new DateTime($enddate);
-												echo ' - ' . $enddate->format('m/d/Y');
-											}
-											if (get_field('event_start_time', false, false) != '') :
-											?>
-											<br>
-											<strong>Time:</strong>
-											<?php echo get_field('event_start_time', false, false);
-											if (get_field('event_end_time', false, false) != '')
-											{
-											 	 echo " - " . get_field('event_end_time', false, false);
-											}
-											endif;
-				 							?>
-											<br>
-											<strong>Location: </strong>
-											<?php
-
-											$location = get_field('event_location');
-
-											if( !empty($location) ):
-											$mapsUrl = 'http://maps.google.com/?q=' . $location['address'];
-											?>
-											<a href="<?php echo $mapsUrl ?>" target="_blank"><?php echo str_replace(", United States", "", $location['address'])?> <i class="fa fa-external-link" aria-hidden="true"></i></a>
-											<?php endif; ?>
-										</div>
-									</div>
-								</div>
-								<?php
-								endif;
-								endforeach;
-								?>
-								</div>
-								<?php
-								endif;
-								?>
-
-				<!-- end current events -->
-
-
-				<h3 class="text-center no-bottom-margin">Next Event</h3>
-				<div class="row no-side-margin event-section">
-					<?php
-					$todays_date = date('Ymd');
-					$args = array(
-																'numberposts' => 1,
-																'offset' => 0,
-																'category' => 0,
-																'orderby' => 'event_date',
-																'order' => 'asc',
-																'meta_key' => 'event_date',
-																'meta_compare'	=> '>=',
-																'meta_value'		=> $todays_date,
-																'post_type' => 'event',
-																'post_status' => 'publish',
-																'suppress_filters' => true
-					);
-
-					$recent_posts = get_posts( $args, ARRAY_A );
-					if (!empty($recent_posts)) :
-					foreach ($recent_posts as $post) : setup_postdata( $post );
-					$date = get_field('event_date', false, false);
-					$date = new DateTime($date);
-					$enddate = get_field('event_end_date', false, false);
-					?>
-
-					<div class="col-xs-12 event-archive-container">
-						<div class="col-xs-12 col-sm-4  col-sm-offset-1">
-							<?php the_post_thumbnail( 'medium', array( 'class' => 'event-thumb-homepage img-responsive center-block' ) ); ?>
-						</div>
-						<div class="col-xs-12 col-sm-6  col-sm-offset-1">
-							<div class="center-block">
-								<h4><?php the_title(); ?></h4>
-								<?php the_content(); ?>
-								<strong>Date:</strong> <?php
-
-								echo $date->format('m/d/Y');
-								if ($enddate != '') {
-									$enddate = new DateTime($enddate);
-									echo ' - ' . $enddate->format('m/d/Y');
-								}
-								if (get_field('event_start_time', false, false) != '') :
-								?>
-								<br>
-								<strong>Time:</strong>
-								<?php echo get_field('event_start_time', false, false);
-								if (get_field('event_end_time', false, false) != '')
-								{
-								 	 echo " - " . get_field('event_end_time', false, false);
-								}
-								endif;
-	 							?>
-								<br>
-								<strong>Location: </strong>
-								<?php
-
-								$location = get_field('event_location');
-
-								if( !empty($location) ):
-								$mapsUrl = 'http://maps.google.com/?q=' . $location['address'];
-								?>
-								<a href="<?php echo $mapsUrl ?>" target="_blank"><?php echo str_replace(", United States", "", $location['address'])?> <i class="fa fa-external-link" aria-hidden="true"></i></a>
-								<?php endif ?>
-								<h4><a href="<?php the_field('event_website') ?>" target="_blank">More info <i class="fa fa-external-link" aria-hidden="true"></i></a></h4>
-							</div>
-						</div>
-					</div>
-					<?php endforeach; ?>
-				<?php else : ?>
-					<h4 class="text-center">Stay tuned for more events!</h4>
-					<?php endif ?>
-				</div>
-				<h3 class="text-center read-more"><a href="events">See All Events</a></h3>
-			</div>
 			<!-- <div class="section">
 				<h2 class="text-center">Gallery</h2>
 			</div> -->

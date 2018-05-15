@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package round
+ * @package hazelkeWedding
  */
 
 if ( ! function_exists( 'round_setup' ) ) :
@@ -148,3 +148,7 @@ function my_acf_google_map_api( $api ){
 }
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+@ini_set( ‘upload_max_size’ , ’25MB’ );
+@ini_set( ‘post_max_size’, ’27MB’);
+@ini_set( ‘memory_limit’, ’30MB’ );

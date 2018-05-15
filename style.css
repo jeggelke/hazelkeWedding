@@ -1,7 +1,7 @@
 /*
-Theme Name: round
+Theme Name: hazelkeWedding
 Theme URI: http://underscores.me/
-Author: Underscores.me
+Author: Jake Heggelke
 Author URI: http://underscores.me/
 Description: Description
 Version: 1.0.0
@@ -556,17 +556,23 @@ a:active {
 }
 
 .main-navigation li{
-    background:url('dot.png') no-repeat left;
 		background-size: 20px;
-		padding-left: 20px;
+		margin: auto 10px;
+
+}
+.main-navigation ul li a{
+		background-color: inherit;
 }
 
-.main-navigation li:last-child:after{
-    background:url('dot.png') no-repeat right;
-		background-size: 20px;
-		padding-right: 20px;
-		padding-bottom: 10px;
-		content: "";
+.main-navigation ul li a:hover{
+		background-color: #fff;
+		-webkit-transition: background-color .25s ease-in-out;
+		-moz-transition: background-color .25s ease-in-out;
+		-o-transition: background-color .25s ease-in-out;
+		transition: background-color .25s ease-in-out;
+		-webkit-box-shadow: 0 3px 3px #777;
+	  -moz-box-shadow: 0 3px 3px #777;
+	  box-shadow: 0 3px 3px #777;
 }
 
 .main-navigation a {

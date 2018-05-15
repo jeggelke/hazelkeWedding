@@ -2,7 +2,7 @@
 /**
  * round Theme Customizer.
  *
- * @package round
+ * @package hazelkeWedding
  */
 
 /**
