@@ -20,7 +20,7 @@
   return get_template_directory_uri() . $someUrl;
 } ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="//fonts.googleapis.com/css?family=Comfortaa|Mallanna|Poppins|Questrial|Quicksand" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Montserrat|Mallanna|Poppins|Questrial|Quicksand|Tajawal|Kavivanar" rel="stylesheet">
 <link id="bootstrap-css" rel="stylesheet" href=<?php echo getRoot('/3rd-party/bootstrap/css/bootstrap.min.css')?>>
 <link id="normalize-css" rel="stylesheet" href=<?php echo getRoot('/3rd-party/normalize/normalize.css')?>>
 <link id="main-style" rel="stylesheet" href=<?php echo getRoot('/css/main.css') ?>>
@@ -41,14 +41,15 @@
 </head>
 
 <body <?php body_class(); ?>>
+  <?php $homeUrl = get_home_url() ?>
 <div id="page" class="site container-fluid no-side-padding">
   <div class="row no-side-margin text-center top-row">
-    <div class="col-xs-4">July 28, 2018</div>
+    <div class="col-xs-4"><a href="<?php echo $homeUrl ?>"><i class="fa fa-home home-icon" aria-hidden="true" ></i></a>July 28, 2018</div>
     <div class="col-xs-4">Chatham, NY</div>
     <div class="col-xs-4">#hazelkeWedding</div>
   </div>
   <div class="row no-side-margin">
-    <div class="col-xs-12 text-center no-side-margin"><h1>Jake & Sarah</h1></div>
+    <div class="col-xs-12 text-center no-side-margin header-site-name"><h1><a href="<?php echo $homeUrl?>">Jake & Sarah</a></h1></div>
   </div>
   <div class="row no-side-margin">
     <nav id="site-navigation" class="main-navigation navbar" role="navigation">

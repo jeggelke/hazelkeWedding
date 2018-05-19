@@ -5,15 +5,46 @@
     float: none;
 }
 
+/* floating header */
+/* Style the header */
+/*.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+}
+*/
+#site-navigation {
+  z-index: 100;
+}
+/* Page content */
+.content-area {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #eee;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.content-area-added-padding {
+  padding-top: 102px;
+}
+/*end floating header*/
+
+
 body {
   background-color: #efefef;
-  font-family: 'Comfortaa', cursive;
-  font-size: 1.4em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6em;
   margin-top: 20px;
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Kavivanar', sans-serif;
 }
 
 h4 {
@@ -22,15 +53,15 @@ h4 {
 
 a {
   text-decoration: none;
-  color: #00cccc;
+  color: #b87333;
 }
 
 a:visited {
-  color: #00cccc;
+  color: #b87333;
 }
 
 a:hover {
-  color: #00cccc;
+  color: #a4672d;
   text-decoration: underline;
 }
 
@@ -50,6 +81,26 @@ p {
 
 .site-branding {
 margin-bottom: 60px;
+}
+
+.header-site-name a{
+  text-decoration: none;
+  color: #000;
+}
+
+.header-site-name a:hover {
+  color: #a4672d;
+}
+
+.home-icon {
+  color: #000;
+  text-decoration: none;
+  font-size: 2em !important;
+  vertical-align: middle;
+}
+
+.home-icon:hover {
+  color: #a4672d;
 }
 
 .navbar {
@@ -349,6 +400,22 @@ footer {
     margin-top:40px;
   }
 
+}
+
+@media screen and (max-width: 991px)
+{
+  .one-pager-section .inner-flex{
+      display: flex;
+      flex-flow: wrap;
+  }
+
+  .one-pager-section .inner-flex .teaser-container {
+    order: 1;
+  }
+  .one-pager-section .inner-flex .img-container {
+    order: 0;
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (min-width: 768px) {

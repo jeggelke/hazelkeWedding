@@ -21,7 +21,7 @@ get_header(); ?>
 					<header id="masthead" class="site-header" role="banner">
 						<div class="site-branding ">
 							<div class="row header-container">
-								<div class="col-xs-12 no-side-padding hipster-photo-slanted">
+								<div class="col-xs-12 col-md-8 col-md-offset-2 no-side-padding hipster-photo-slanted">
 										<img src=<?php echo getRoot('/theme-images/header.jpg') ?> class="img-responsive" alt="header image">
 								</div>
 							</div>
@@ -59,24 +59,25 @@ get_header(); ?>
 					$target = ($external_url != "") ? "_blank" : "_self";
 					$read_more = get_field('one_pager_read_more', false, false);
 					$key = array_search($post, $one_pager_posts);
+					$slugName = $post->post_name;
 					?>
-					<div class="one-pager-section">
+					<div class="one-pager-section" id="<?php echo $slugName ?>">
 						<h3 class="text-center"><?php echo $title_text ?></h3>
 					<div class="inner-flex">
 						<?php if ($key % 2 == 0) : ?>
-							<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-md-4 col-md-offset-1 no-side-padding vcenter img-container order-sm-0">
+							<div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-1 no-side-padding vcenter img-container order-sm-0">
 								<img class="img-responsive center-block hipster-photo" src="<?php the_field('one_pager_image') ?>" />
 							</div><!--
-							--><div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-1 vcenter teaser-container order-sm-1">
+							--><div class="col-xs-12 col-md-4 col-md-offset-1 vcenter teaser-container order-sm-1">
 								<p class=""><?php echo $teaser_text ?></p>
 								<h4 class="text-center read-more-text"><a href="<?php echo $post_url ?>" target="<?php echo $target ?>"><?php echo $read_more ?></a></h4>
 							</div>
 						<?php else : ?>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-1 vcenter teaser-container order-sm-1">
+							<div class="col-xs-12 col-md-4 col-md-offset-1 vcenter teaser-container order-sm-1">
 								<p class=""><?php echo $teaser_text ?></p>
 								<h4 class="text-center read-more-text"><a href="<?php echo $post_url ?>" target="<?php echo $target ?>"><?php echo $read_more ?></a></h4>
 							</div><!--
-							--><div class="col-xs-10 col-xs-offset-1 col-sm-6 col-md-4 col-md-offset-1 no-side-padding vcenter img-container order-sm-0">
+							--><div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-1 no-side-padding vcenter img-container order-sm-0">
 								<img class="img-responsive center-block hipster-photo" src="<?php the_field('one_pager_image') ?>" />
 							</div>
 						<?php endif ?>
