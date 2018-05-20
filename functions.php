@@ -149,6 +149,47 @@ function my_acf_google_map_api( $api ){
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
+add_filter('admin_init', 'my_general_settings_register_fonts_to_load');
+add_filter('admin_init', 'my_general_settings_register_header_fonts_load');
+add_filter('admin_init', 'my_general_settings_register_body_font_load');
+
+
+function my_general_settings_register_fonts_to_load()
+{
+    register_setting('general', 'google_fonts', 'esc_attr');
+    add_settings_field('google_fonts', '<label for="google_fonts">'.__('Google Fonts' , 'google_fonts' ).'</label>' , 'my_general_settings_field_fonts_to_load_html', 'general');
+}
+
+function my_general_settings_field_fonts_to_load_html()
+{
+    $value = get_option( 'google_fonts', '' );
+    echo '<input type="text" id="google_fonts" name="google_fonts" value="' . $value . '" />';
+}
+
+function my_general_settings_register_header_fonts_load()
+{
+    register_setting('general', 'google_fonts_headers', 'esc_attr');
+    add_settings_field('google_fonts_headers', '<label for="google_fonts_headers">'.__('Google Header Fonts' , 'google_fonts_headers' ).'</label>' , 'my_general_settings_field_header_fonts_html', 'general');
+}
+
+function my_general_settings_field_header_fonts_html()
+{
+    $value = get_option( 'google_fonts_headers', '' );
+    echo '<input type="text" id="google_fonts_headers" name="google_fonts_headers" value="' . $value . '" />';
+}
+
+function my_general_settings_register_body_font_load()
+{
+    register_setting('general', 'google_fonts_body', 'esc_attr');
+    add_settings_field('google_fonts_body', '<label for="google_fonts_body">'.__('Google Body Font' , 'google_fonts_body' ).'</label>' , 'my_general_settings_field_body_font_html', 'general');
+}
+
+function my_general_settings_field_body_font_html()
+{
+    $value = get_option( 'google_fonts_body', '' );
+    echo '<input type="text" id="google_fonts_body" name="google_fonts_body" value="' . $value . '" />';
+}
+
 @ini_set( ‘upload_max_size’ , ’25MB’ );
 @ini_set( ‘post_max_size’, ’27MB’);
 @ini_set( ‘memory_limit’, ’30MB’ );

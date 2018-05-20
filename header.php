@@ -20,7 +20,7 @@
   return get_template_directory_uri() . $someUrl;
 } ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="//fonts.googleapis.com/css?family=Montserrat|Mallanna|Poppins|Questrial|Quicksand|Tajawal|Kavivanar" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=<?php echo get_option('google_fonts') ?>" rel="stylesheet">
 <link id="bootstrap-css" rel="stylesheet" href=<?php echo getRoot('/3rd-party/bootstrap/css/bootstrap.min.css')?>>
 <link id="normalize-css" rel="stylesheet" href=<?php echo getRoot('/3rd-party/normalize/normalize.css')?>>
 <link id="main-style" rel="stylesheet" href=<?php echo getRoot('/css/main.css') ?>>
@@ -38,6 +38,15 @@
   ga('send', 'pageview');
 
 </script>
+<style>
+body {
+  font-family: <?php echo get_option('google_fonts_body', '') ?>, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: <?php echo get_option('google_fonts_headers', '') ?>, sans-serif;
+}
+</style>
 </head>
 
 <body <?php body_class(); ?>>
