@@ -291,6 +291,10 @@ footer {
   margin-bottom: 20px;
 }
 
+#masthead {
+  margin-bottom: 20px;
+}
+
 /*one-pager stuff*/
 .one-pager-section {
   margin: 10px auto;
@@ -326,7 +330,7 @@ footer {
 }
 
 .inner-flex {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
@@ -343,7 +347,11 @@ footer {
 {
 
   header {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
+  }
+
+  .content-area-added-padding {
+    padding-top: 0px;
   }
 
   #site-navigation {
@@ -411,6 +419,14 @@ footer {
 
   .top-row {
     margin-top:40px;
+  }
+
+  #masthead {
+    margin-bottom: 0px;
+  }
+
+  .inner-flex {
+    margin-bottom: 20px;
   }
 
 }
