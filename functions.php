@@ -152,6 +152,7 @@ add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 add_filter('admin_init', 'my_general_settings_register_fonts_to_load');
 add_filter('admin_init', 'my_general_settings_register_header_fonts_load');
 add_filter('admin_init', 'my_general_settings_register_body_font_load');
+add_filter('admin_init', 'my_general_settings_register_about_site_load');
 
 
 function my_general_settings_register_fonts_to_load()
@@ -188,6 +189,18 @@ function my_general_settings_field_body_font_html()
 {
     $value = get_option( 'google_fonts_body', '' );
     echo '<input type="text" id="google_fonts_body" name="google_fonts_body" value="' . $value . '" />';
+}
+
+function my_general_settings_register_about_site_load()
+{
+    register_setting('general', 'about_site', 'esc_attr');
+    add_settings_field('about_site', '<label for="about_site">'.__('About Site' , 'about_site' ).'</label>' , 'my_general_settings_field_about_site_html', 'general');
+}
+
+function my_general_settings_field_about_site_html()
+{
+    $value = get_option( 'about_site', '' );
+    echo '<input type="text" id="about_site" name="about_site" value="' . $value . '" />';
 }
 
 @ini_set( ‘upload_max_size’ , ’25MB’ );

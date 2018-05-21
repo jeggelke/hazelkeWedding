@@ -55,7 +55,7 @@ h1, h2, h3, h4 {
   <div class="row no-side-margin text-center top-row" id='top-row'>
     <div class="col-xs-4"><a href="<?php echo $homeUrl ?>"><i class="fa fa-home home-icon" aria-hidden="true" ></i></a>July 28, 2018</div>
     <div class="col-xs-4">Chatham, NY</div>
-    <div class="col-xs-4">#hazelkeWedding</div>
+    <div class="col-xs-4">#hazelke</div>
   </div>
   <div class="row no-side-margin">
     <div class="col-xs-12 text-center no-side-margin header-site-name"><h1><a href="<?php echo $homeUrl?>">Jake & Sarah</a></h1></div>

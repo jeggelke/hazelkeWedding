@@ -25,6 +25,11 @@ get_header(); ?>
 										<img src=<?php echo getRoot('/theme-images/header.jpg') ?> class="img-responsive" alt="header image">
 								</div>
 							</div>
+							<div class="row ">
+								<div class="col-xs-12 col-md-10 col-md-offset-1 no-side-padding">
+										<p><?php echo get_option('about_site') ?></p>
+								</div>
+							</div>
 
 						</div><!-- .site-branding -->
 					</header><!-- #masthead -->
