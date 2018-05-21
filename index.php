@@ -21,7 +21,7 @@ get_header(); ?>
 					<header id="masthead" class="site-header" role="banner">
 						<div class="site-branding ">
 							<div class="row header-container">
-								<div class="col-xs-12 col-md-8 col-md-offset-2 no-side-padding hipster-photo-slanted">
+								<div class="col-xs-12 col-md-8 col-md-offset-2 no-side-padding hipster-photo">
 										<img src=<?php echo getRoot('/theme-images/header.jpg') ?> class="img-responsive" alt="header image">
 								</div>
 							</div>

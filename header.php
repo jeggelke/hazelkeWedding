@@ -43,7 +43,7 @@ body {
   font-family: <?php echo get_option('google_fonts_body', '') ?>, sans-serif;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, #top-row {
   font-family: <?php echo get_option('google_fonts_headers', '') ?>, sans-serif;
 }
 </style>
@@ -53,9 +53,9 @@ h1, h2, h3, h4 {
   <?php $homeUrl = get_home_url() ?>
 <div id="page" class="site container-fluid no-side-padding">
   <div class="row no-side-margin text-center top-row" id='top-row'>
-    <div class="col-xs-4"><a href="<?php echo $homeUrl ?>"><i class="fa fa-home home-icon" aria-hidden="true" ></i></a>July 28, 2018</div>
-    <div class="col-xs-4">Chatham, NY</div>
-    <div class="col-xs-4">#hazelke</div>
+    <div class="col-xs-5 col-sm-4"><a href="<?php echo $homeUrl ?>"><i class="fa fa-home home-icon" aria-hidden="true" ></i></a>July 28, 2018</div>
+    <div class="col-xs-3 col-sm-4">Chatham, NY</div>
+    <div class="col-xs-4 col-sm-4">#hazelke</div>
   </div>
   <div class="row no-side-margin">
     <div class="col-xs-12 text-center no-side-margin header-site-name"><h1><a href="<?php echo $homeUrl?>">Jake & Sarah</a></h1></div>
