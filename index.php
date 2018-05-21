@@ -17,7 +17,7 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="row no-side-margin">
-				<div class="col-xs-offset-1 col-xs-10">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1">
 					<header id="masthead" class="site-header" role="banner">
 						<div class="site-branding ">
 							<div class="row header-container">
